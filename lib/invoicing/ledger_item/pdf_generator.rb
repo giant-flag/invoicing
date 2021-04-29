@@ -73,7 +73,7 @@ module Invoicing
           table_details <<
             [index + 1, line_item.description, net_amount]
         end
-        pdf.table(table_details, column_widths: [40, 380, 60], header: true,
+        pdf.table(table_details, column_widths: [40, 440, 60], header: true,
                   cell_style: {padding: 5, border_width: 0.5}) do
           row(0).style(size: 10, font_style: :bold)
           row(0..100).style(size: 9)

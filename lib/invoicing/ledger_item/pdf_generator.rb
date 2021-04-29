@@ -67,11 +67,11 @@ module Invoicing
         pdf.text 'Invoice Summary', size: 12, style: :bold
         pdf.stroke_horizontal_rule
 
-        table_details = [ ['Sl. no.', 'Description', 'Unit price', 'Total Price'] ]
+        table_details = [ ['Sl. no.', 'Description', 'Total Price'] ]
         invoice.line_items.each_with_index do |line_item, index|
           net_amount = line_item.net_amount_formatted
           table_details <<
-            [index + 1, line_item.description, '10', net_amount]
+            [index + 1, line_item.description, net_amount]
         end
         pdf.table(table_details, column_widths: [40, 380, 60, 60], header: true,
                   cell_style: {padding: 5, border_width: 0.5}) do

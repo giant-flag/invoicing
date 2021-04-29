@@ -68,19 +68,21 @@ module Invoicing
         pdf.stroke_horizontal_rule
 
         table_details = [ ['Sl. no.', 'Description', 'Total Price'] ]
+        line_count = 0
         invoice.line_items.each_with_index do |line_item, index|
           net_amount = line_item.net_amount_formatted
           table_details <<
             [index + 1, line_item.description, net_amount]
+            line_count = index + 1
         end
         pdf.table(table_details, column_widths: [40, 440, 60], header: true,
                   cell_style: {padding: 5, border_width: 0.5}) do
           row(0).style(size: 10, font_style: :bold)
-          row(0..100).style(size: 9)
+          row(0..line_count).style(size: 9)
 
           cells.columns(0).align = :right
           cells.columns(2).align = :right
-          row(0..100).borders = [:top, :bottom]
+          row(0..line_count).borders = [:top, :bottom]
         end
 
         summary_details = [
@@ -90,8 +92,8 @@ module Invoicing
         ]
         pdf.table(summary_details, column_widths: [480, 60], header: true,
                   cell_style: {padding: 5, border_width: 0.5}) do
-          row(0..100).style(size: 9, font_style: :bold)
-          row(0..100).borders = []
+          row(0..line_count).style(size: 9, font_style: :bold)
+          row(0..line_count).borders = []
           cells.columns(0..100).align = :right
         end
 

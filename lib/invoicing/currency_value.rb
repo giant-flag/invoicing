@@ -70,6 +70,7 @@ module Invoicing
       'GBP' => {:symbol => "\xC2\xA3"},                       # Pound Sterling
       'USD' => {:symbol => "$"},                              # United States Dollar
       'CAD' => {:symbol => "$"},                              # Canadian Dollar
+      'ZAR' => {:symbol => "R"},                              # Canadian Dollar
       'AUD' => {:symbol => "$"},                              # Australian Dollar
       'CNY' => {:symbol => "\xE5\x85\x83", :suffix => true},  # Chinese Yuan (RMB)
       'INR' => {:symbol => "\xE2\x82\xA8"},                   # Indian Rupee

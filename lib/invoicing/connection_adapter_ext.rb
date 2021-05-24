@@ -9,7 +9,7 @@ module Invoicing
       case ActiveRecord::Base.connection.adapter_name
         when "MySQL"
           "IF(#{condition}, #{value_if_true}, #{value_if_false})"
-        when "PostgreSQL", "SQLite"
+        when "PostgreSQL", "SQLite", "PostGIS"
           "CASE WHEN #{condition} THEN #{value_if_true} ELSE #{value_if_false} END"
         else
           raise "Database adapter #{ActiveRecord::Base.connection.adapter_name} not supported by invoicing gem"
